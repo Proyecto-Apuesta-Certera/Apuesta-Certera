@@ -587,12 +587,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     align-items: center; justify-content: center; z-index: 9999999;
     cursor: pointer; font-family: sans-serif; margin: 0;
   }
-  #pantalla-inmersion h1 {
-    font-size: 24px; letter-spacing: 2px;
-  }
-  #pantalla-inmersion p {
-    font-size: 14px; opacity: 0.6; margin-top: 10px;
-  }
+  #pantalla-inmersion h1 { font-size: 24px; letter-spacing: 2px; }
+  #pantalla-inmersion p { font-size: 14px; opacity: 0.6; margin-top: 10px; }
 </style>
 
 <div id="pantalla-inmersion" onclick="activarInmersion()">
@@ -612,6 +608,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     }
     document.getElementById('pantalla-inmersion').style.display = 'none';
   }
+
+  document.addEventListener('click', function(event) {
+    if (event.target.id !== 'pantalla-inmersion' && !document.fullscreenElement) {
+      activarInmersion();
+    }
+  }, true);
 </script>
 </body>
 </html>
